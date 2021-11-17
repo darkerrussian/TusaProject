@@ -27,6 +27,7 @@ public class PartyItem extends AppCompatActivity {
         txtLocation = findViewById(R.id.text_location);
         img.setImageResource(image);
         txt.setText(count);
+        //sdsd
         txtLocation.setText(location);
 
         //Test code for sending location to Map

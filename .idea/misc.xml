@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/cage/AndroidStudioProjects/tusaproject-master/app/src/main/res/layout/activity_main.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/cage/AndroidStudioProjects/tusaproject-master/app/src/main/res/layout/activity_party_item.xml" value="0.2" />
+        <entry key="..\:/Users/cage/AndroidStudioProjects/tusaproject-master/app/src/main/res/layout/activity_register.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/cage/AndroidStudioProjects/tusaproject-master/app/src/main/res/layout/fragment_create_map.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/cage/AndroidStudioProjects/tusaproject-master/app/src/main/res/layout/fragment_map.xml" value="0.223731884057971" />
         <entry key="..\:/Users/cage/AndroidStudioProjects/tusaproject-master/app/src/main/res/layout/partie_info.xml" value="0.25416666666666665" />
       </map>

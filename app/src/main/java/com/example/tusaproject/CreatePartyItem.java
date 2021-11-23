@@ -12,11 +12,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tusaproject.interfaces.PassDataInterface;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class CreatePartyItem extends AppCompatActivity implements PassDataInterface {
@@ -30,6 +33,9 @@ public class CreatePartyItem extends AppCompatActivity implements PassDataInterf
     public ArrayList<Party> party = new ArrayList<>();
     CreateMapFragment createMapFragment;
     String data;
+    FirebaseAuth auth;
+    FirebaseUser firebaseUser;
+    List<FirebaseUser> firebaseUsersList;
 
 
 
@@ -92,7 +98,11 @@ public class CreatePartyItem extends AppCompatActivity implements PassDataInterf
 
     public void CreateParty(String name, String nums, String number, String location){
         Map<String, String> hashMap = new HashMap<>();
-
+        //new code
+        List <FirebaseUser> firebaseUsers = new ArrayList<>();
+        auth = FirebaseAuth.getInstance();
+        firebaseUsers.add(auth.getCurrentUser());
+        //new code
         hashMap.put("Name", name);
         hashMap.put("numbers", nums);
 
@@ -100,8 +110,16 @@ public class CreatePartyItem extends AppCompatActivity implements PassDataInterf
 
         //reference = database.getInstance().getReference("Parties").child(number);
         reference = database.getInstance().getReference("Parties").child(number);
+        firebaseUser = firebaseUsers.get(0);
         reference.setValue(hashMap);
-        party.add(new Party(name, nums, R.drawable.party_1,location));
+        reference = database.getInstance().getReference("Parties").child(number).child("users");
+        reference.setValue(firebaseUser.getEmail());
+
+        //reference.setValue(firebaseUser.getEmail());
+        Party currentParty = new Party(name, nums, R.drawable.party_1,location);
+        currentParty.setUsersList(firebaseUsers);
+        party.add(currentParty);
+        //currentParty.setUsersList(firebaseUsers);
 
 
 

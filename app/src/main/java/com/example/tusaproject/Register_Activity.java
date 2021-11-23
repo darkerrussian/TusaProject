@@ -81,6 +81,7 @@ public class Register_Activity extends AppCompatActivity {
                         FirebaseUser firebaseUser = auth.getCurrentUser();
                         String userid = firebaseUser.getUid();
 
+
                         myRef = database.getInstance().getReference("Users").child(userid);
 
 

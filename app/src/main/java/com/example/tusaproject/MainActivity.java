@@ -18,6 +18,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
@@ -46,7 +47,9 @@ public class MainActivity extends AppCompatActivity {
 
                 for(DataSnapshot dataSnapshot: snapshot.getChildren()){
                     Party party1 = new Party(dataSnapshot.child("Name").getValue().toString(), dataSnapshot.child("numbers").getValue().toString(), R.drawable.party_1, dataSnapshot.child("location").getValue().toString()) ;
-
+                    List<String> getUsers = new ArrayList<>();
+                    getUsers.add(dataSnapshot.child("users").getValue().toString());
+                    party1.setUsersMails(getUsers);
                     party.add(party1);
 
                    PartyAdapter adapter = new PartyAdapter(MainActivity.this, party);

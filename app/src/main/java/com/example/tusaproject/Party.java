@@ -1,11 +1,26 @@
 package com.example.tusaproject;
 
+import com.google.firebase.auth.FirebaseUser;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Party {
 
     private String name;
     private String numMans;
     private int imagePath;
     private String location;
+    private List <FirebaseUser> usersList;
+    private List<String> usersMails;
+
+    public List<String> getUsersMails() {
+        return usersMails;
+    }
+
+    public void setUsersMails(List<String> usersMails) {
+        this.usersMails = usersMails;
+    }
 
     public int getImagePath() {
         return imagePath;
@@ -23,12 +38,39 @@ public class Party {
         this.location = location;
     }
 
+
+    /*public String getPartyUsers() {
+        List<String> users = new ArrayList<>();
+
+        for(FirebaseUser user: usersList){
+            users.add(user.getEmail());
+
+
+        }
+        return users.toString();
+    }*/
+
+
+    public List<FirebaseUser> getUsersList() {
+
+        return usersList;
+    }
+
+    /*public List<String> getUsersNames(){
+        usersList.
+    }*/
+
+    public void setUsersList(List<FirebaseUser> usersList) {
+        this.usersList = usersList;
+    }
+
     Party(String name, String numMans, int imagePath, String location){
 
         this.name = name;
         this.numMans = numMans;
         this.imagePath = imagePath;
         this.location = location;
+
     }
 
     public String getName() {

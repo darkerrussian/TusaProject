@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/personal_img"
         android:layout_width="match_parent"
-        android:layout_height="247dp"
+        android:layout_height="100dp"
         android:adjustViewBounds="true"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,6 +24,16 @@
         android:textSize="23dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/personal_img" />
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/list_users"
+        app:layout_constraintStart_toStartOf="@+id/personal_text"
+        app:layout_constraintTop_toBottomOf="@+id/personal_img"
+        app:layout_constraintEnd_toStartOf="@+id/joinprt"
+        />
+
+
 
     <RelativeLayout
         android:id="@+id/map_layout"
@@ -35,16 +45,16 @@
         app:layout_constraintTop_toBottomOf="@+id/personal_text"
         app:layout_constraintVertical_bias="0.081" />
 
-    <TextView
-        android:id="@+id/text_location"
+    <Button
+        android:id="@+id/joinprt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="320dp"
-        android:text=""
-        app:layout_constraintBottom_toTopOf="@+id/map_layout"
-        app:layout_constraintStart_toEndOf="@+id/personal_text"
-        app:layout_constraintTop_toBottomOf="@+id/personal_img"
-        app:layout_constraintVertical_bias="0.4" />
+
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="36dp"
+        android:text="Join"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/personal_img" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

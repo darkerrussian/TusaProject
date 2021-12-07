@@ -38,13 +38,18 @@ public class PartyItem extends AppCompatActivity {
         int image = intent.getExtras().getInt("imageUrl");
         String location = intent.getStringExtra("location_party");
 
-        String [] partyUsers = intent.getExtras().getStringArray("partyUsers");
+        ArrayList<String> partyUsers = intent.getExtras().getStringArrayList("partyUsers");
+
         img = findViewById(R.id.personal_img);
         txt = findViewById(R.id.personal_text);
         joinButton = findViewById(R.id.joinprt);
         //New code
 
+
+
         listView = findViewById(R.id.list_users);
+
+
 
 
 
@@ -54,14 +59,16 @@ public class PartyItem extends AppCompatActivity {
 
         img.setImageResource(image);
         txt.setText(count);
+
+
         //sdsd
 
         //Test code for sending location to Map
 
         Bundle bundle = new Bundle();
         bundle.putString("location_to_map",location);
-        /*arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, partyUsers);
-        listView.setAdapter(arrayAdapter);*/
+        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, partyUsers);
+        listView.setAdapter(arrayAdapter);
 
         //End testing code
         Fragment fragment = new MapFragment();

@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 for(DataSnapshot dataSnapshot: snapshot.getChildren()){
                     Party party1 = new Party(dataSnapshot.child("Name").getValue().toString(), dataSnapshot.child("numbers").getValue().toString(), R.drawable.party_1, dataSnapshot.child("location").getValue().toString()) ;
                     try {
-                        List<String> getUsers = new ArrayList<>();
+                        ArrayList<String> getUsers = new ArrayList<>();
                         getUsers.add(dataSnapshot.child("users").getValue().toString());
                         party1.setUsersMails(getUsers);
                     }catch (NullPointerException e){

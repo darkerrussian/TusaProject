@@ -11,14 +11,14 @@ public class Party {
     private String numMans;
     private int imagePath;
     private String location;
-    private List <FirebaseUser> usersList;
-    private List<String> usersMails;
+    private ArrayList <FirebaseUser> usersList;
+    private ArrayList<String> usersMails;
 
-    public List<String> getUsersMails() {
+    public ArrayList<String> getUsersMails() {
         return usersMails;
     }
 
-    public void setUsersMails(List<String> usersMails) {
+    public void setUsersMails(ArrayList<String> usersMails) {
         this.usersMails = usersMails;
     }
 
@@ -60,7 +60,7 @@ public class Party {
         usersList.
     }*/
 
-    public void setUsersList(List<FirebaseUser> usersList) {
+    public void setUsersList(ArrayList<FirebaseUser> usersList) {
         this.usersList = usersList;
     }
 

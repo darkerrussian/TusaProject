@@ -35,8 +35,8 @@ public class CreatePartyItem extends AppCompatActivity implements PassDataInterf
     String data;
     FirebaseAuth auth;
     FirebaseUser firebaseUser;
-    List<FirebaseUser> firebaseUsersList;
-    List<String> usersMails;
+    ArrayList<FirebaseUser> firebaseUsersList;
+    ArrayList<String> usersMails;
 
 
 
@@ -100,7 +100,7 @@ public class CreatePartyItem extends AppCompatActivity implements PassDataInterf
     public void CreateParty(String name, String nums, String number, String location){
         Map<String, String> hashMap = new HashMap<>();
         //new code
-        List <FirebaseUser> firebaseUsers = new ArrayList<>();
+        ArrayList <FirebaseUser> firebaseUsers = new ArrayList<>();
         auth = FirebaseAuth.getInstance();
         firebaseUsers.add(auth.getCurrentUser());
         //new code

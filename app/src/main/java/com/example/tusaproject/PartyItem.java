@@ -27,6 +27,7 @@ public class PartyItem extends AppCompatActivity {
     FirebaseAuth auth;
     FirebaseUser firebaseUser;
     ListView listView;
+    ArrayAdapter<String> arrayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,7 @@ public class PartyItem extends AppCompatActivity {
         String count = intent.getStringExtra("count");
         int image = intent.getExtras().getInt("imageUrl");
         String location = intent.getStringExtra("location_party");
+
         String [] partyUsers = intent.getExtras().getStringArray("partyUsers");
         img = findViewById(R.id.personal_img);
         txt = findViewById(R.id.personal_text);
@@ -43,6 +45,8 @@ public class PartyItem extends AppCompatActivity {
         //New code
 
         listView = findViewById(R.id.list_users);
+
+
 
 
         //End new code
@@ -56,6 +60,8 @@ public class PartyItem extends AppCompatActivity {
 
         Bundle bundle = new Bundle();
         bundle.putString("location_to_map",location);
+        /*arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, partyUsers);
+        listView.setAdapter(arrayAdapter);*/
 
         //End testing code
         Fragment fragment = new MapFragment();

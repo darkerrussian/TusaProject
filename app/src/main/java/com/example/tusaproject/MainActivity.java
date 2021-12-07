@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -41,15 +42,21 @@ public class MainActivity extends AppCompatActivity {
         number = 1;
 
         reference = database.getInstance().getReference("Parties");
+
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
 
                 for(DataSnapshot dataSnapshot: snapshot.getChildren()){
                     Party party1 = new Party(dataSnapshot.child("Name").getValue().toString(), dataSnapshot.child("numbers").getValue().toString(), R.drawable.party_1, dataSnapshot.child("location").getValue().toString()) ;
-                    List<String> getUsers = new ArrayList<>();
-                    getUsers.add(dataSnapshot.child("users").getValue().toString());
-                    party1.setUsersMails(getUsers);
+                    try {
+                        List<String> getUsers = new ArrayList<>();
+                        getUsers.add(dataSnapshot.child("users").getValue().toString());
+                        party1.setUsersMails(getUsers);
+                    }catch (NullPointerException e){
+                        Log.println(Log.ERROR,"error", "null users");
+                    }
+
                     party.add(party1);
 
                    PartyAdapter adapter = new PartyAdapter(MainActivity.this, party);

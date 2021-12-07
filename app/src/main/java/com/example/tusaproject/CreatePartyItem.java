@@ -36,6 +36,7 @@ public class CreatePartyItem extends AppCompatActivity implements PassDataInterf
     FirebaseAuth auth;
     FirebaseUser firebaseUser;
     List<FirebaseUser> firebaseUsersList;
+    List<String> usersMails;
 
 
 
@@ -118,6 +119,9 @@ public class CreatePartyItem extends AppCompatActivity implements PassDataInterf
         //reference.setValue(firebaseUser.getEmail());
         Party currentParty = new Party(name, nums, R.drawable.party_1,location);
         currentParty.setUsersList(firebaseUsers);
+        usersMails = new ArrayList<>();
+        usersMails.add(firebaseUser.getEmail());
+        currentParty.setUsersMails(usersMails);
         party.add(currentParty);
         //currentParty.setUsersList(firebaseUsers);
 

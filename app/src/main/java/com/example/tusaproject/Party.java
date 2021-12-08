@@ -13,6 +13,14 @@ public class Party {
     private String location;
     private ArrayList <FirebaseUser> usersList;
     private ArrayList<String> usersMails;
+    private String PartyPath;
+
+    public String getPartyPath(){
+        return PartyPath;
+    }
+    public void setPartyPath(String path){
+        PartyPath = path;
+    }
 
     public ArrayList<String> getUsersMails() {
         return usersMails;

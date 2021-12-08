@@ -51,8 +51,10 @@ public class PartyAdapter extends RecyclerView.Adapter <PartyAdapter.ViewHolder>
                 Intent intent = new Intent(context, PartyItem.class);
                 intent.putExtra("imageUrl", party.getImagePath());
                 intent.putExtra("count", party.getNumMans());
+                intent.putExtra("nameParty", party.getName());
                 intent.putExtra("location_party", party.getLocation());
                 intent.putStringArrayListExtra("partyUsers", party.getUsersMails());
+                //intent.putExtra("partyPath", party.getPartyPath());
 
                 context.startActivity(intent);
 

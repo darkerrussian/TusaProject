@@ -114,7 +114,15 @@ public class CreatePartyItem extends AppCompatActivity implements PassDataInterf
         firebaseUser = firebaseUsers.get(0);
         reference.setValue(hashMap);
         reference = database.getInstance().getReference("Parties").child(number).child("users");
-        reference.setValue(firebaseUser.getEmail());
+        //test
+
+        for(FirebaseUser user : firebaseUsers){
+            reference.setValue(user.getEmail());
+
+        }
+
+        //end
+       // reference.setValue(firebaseUser.getEmail());
 
         //reference.setValue(firebaseUser.getEmail());
         Party currentParty = new Party(name, nums, R.drawable.party_1,location);
@@ -122,6 +130,7 @@ public class CreatePartyItem extends AppCompatActivity implements PassDataInterf
         usersMails = new ArrayList<>();
         usersMails.add(firebaseUser.getEmail());
         currentParty.setUsersMails(usersMails);
+//        currentParty.setPartyPath(number);
         party.add(currentParty);
         //currentParty.setUsersList(firebaseUsers);
 

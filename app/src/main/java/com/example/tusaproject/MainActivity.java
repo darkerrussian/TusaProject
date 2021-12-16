@@ -49,13 +49,14 @@ public class MainActivity extends AppCompatActivity {
 
                 for(DataSnapshot dataSnapshot: snapshot.getChildren()){
                     Party party1 = new Party(dataSnapshot.child("Name").getValue().toString(), dataSnapshot.child("numbers").getValue().toString(), R.drawable.party_1, dataSnapshot.child("location").getValue().toString()) ;
-                    try {
+
+
                         ArrayList<String> getUsers = new ArrayList<>();
-                        getUsers.add(dataSnapshot.child("users").getValue().toString());
+                        getUsers.addAll((ArrayList<String>)dataSnapshot.child("users").getValue());
+                        //Почему я тут должен присваивать имеилы надо попробовать в createpartyitem или partyitem
                         party1.setUsersMails(getUsers);
-                    }catch (NullPointerException e){
-                        Log.println(Log.ERROR,"error", "null users");
-                    }
+                        Log.println(Log.ERROR, "ERRRR", getUsers.toString());
+
 
                     party.add(party1);
 

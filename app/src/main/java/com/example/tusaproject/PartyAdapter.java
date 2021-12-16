@@ -2,6 +2,8 @@ package com.example.tusaproject;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +47,7 @@ public class PartyAdapter extends RecyclerView.Adapter <PartyAdapter.ViewHolder>
         holder.peoples.setText(party.getNumMans());
         holder.name.setText(party.getName());
         holder.image.setImageResource(party.getImagePath());
+
         holder.btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,6 +57,10 @@ public class PartyAdapter extends RecyclerView.Adapter <PartyAdapter.ViewHolder>
                 intent.putExtra("nameParty", party.getName());
                 intent.putExtra("location_party", party.getLocation());
                 intent.putStringArrayListExtra("partyUsers", party.getUsersMails());
+
+
+
+
                 //intent.putExtra("partyPath", party.getPartyPath());
 
                 context.startActivity(intent);

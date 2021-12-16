@@ -79,6 +79,7 @@ public class CreateMapFragment extends Fragment {
 
                         bundle.putString("output_location", location);
 
+
                         supportMapFragment.setArguments(bundle);
 
 

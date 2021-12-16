@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,7 +31,7 @@ public class CreatePartyItem extends AppCompatActivity implements PassDataInterf
     EditText nameParty, maxParty;
     TextView textView;
     String location;
-    public ArrayList<Party> party = new ArrayList<>();
+    //public ArrayList<Party> party = new ArrayList<>();
     CreateMapFragment createMapFragment;
     String data;
     FirebaseAuth auth;
@@ -116,22 +117,25 @@ public class CreatePartyItem extends AppCompatActivity implements PassDataInterf
         reference = database.getInstance().getReference("Parties").child(number).child("users");
         //test
 
-        for(FirebaseUser user : firebaseUsers){
+
+        /*for(FirebaseUser user : firebaseUsers){
             reference.setValue(user.getEmail());
 
-        }
+        }*/
 
         //end
        // reference.setValue(firebaseUser.getEmail());
 
         //reference.setValue(firebaseUser.getEmail());
         Party currentParty = new Party(name, nums, R.drawable.party_1,location);
-        currentParty.setUsersList(firebaseUsers);
+        //currentParty.setUsersList(firebaseUsers);
         usersMails = new ArrayList<>();
         usersMails.add(firebaseUser.getEmail());
         currentParty.setUsersMails(usersMails);
+        reference.setValue(currentParty.getUsersMails());
+
 //        currentParty.setPartyPath(number);
-        party.add(currentParty);
+        //party.add(currentParty);
         //currentParty.setUsersList(firebaseUsers);
 
 

@@ -23,7 +23,7 @@ public class Party {
     }
 
     public ArrayList<String> getUsersMails() {
-        return usersMails;
+        return this.usersMails;
     }
 
     public void setUsersMails(ArrayList<String> usersMails) {

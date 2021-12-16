@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -37,6 +38,7 @@ public class PartyItem extends AppCompatActivity {
     ArrayAdapter<String> arrayAdapter;
     DatabaseReference reference;
     FirebaseDatabase database;
+    Integer counter = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +53,8 @@ public class PartyItem extends AppCompatActivity {
 
         ArrayList<String> partyUsers = intent.getExtras().getStringArrayList("partyUsers");
 
+       // Log.println(Log.ERROR,"usersinfotest",partyUsers.toString());
+
         img = findViewById(R.id.personal_img);
         txt = findViewById(R.id.personal_text);
         joinButton = findViewById(R.id.joinprt);
@@ -62,6 +66,7 @@ public class PartyItem extends AppCompatActivity {
 
         //Join Button Code
         String partyPath = "party_" + String.valueOf(count) + partyName;
+        reference = database.getInstance().getReference("Parties").child(partyPath).child("users");
         joinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,15 +75,49 @@ public class PartyItem extends AppCompatActivity {
                 auth = FirebaseAuth.getInstance();
                 firebaseUser = auth.getCurrentUser();
                 String currentUserMail = firebaseUser.getEmail();
-                reference = database.getInstance().getReference("Parties").child(partyPath).child("users");
-                for(String userMail : partyUsers){
-                    if(userMail.equals(currentUserMail)){
-                        return;
-                    }else{
-                        partyUsers.add(currentUserMail);
-                        reference.setValue(partyUsers);
+
+                //test = test.substring(1, test.length()-1);
+                //Log.println(Log.INFO,"usersinfotest",test);
+
+           /*     for(int k =0; k<partyUsers.size(); k++){
+                    if(currentUserMail != partyUsers.get(k)){
+
+                        Log.println(Log.INFO,"2","adding user");
+                    }
+                    else{
+                        counter++;
                     }
                 }
+                Log.println(Log.INFO,"usersinfotest",counter.toString());
+                if(counter==0) {
+                    partyUsers.add(currentUserMail);
+
+                    reference.setValue(partyUsers);
+                }*/
+
+
+
+                Log.println(Log.INFO,"usersinfotest",partyUsers.toString());
+
+               for(String userMail : partyUsers){
+
+                    if(currentUserMail == userMail){
+                        ++counter;
+
+
+                    }
+
+                }
+                Log.println(Log.INFO,"usersinfotest",counter.toString());
+                if(counter==0){
+                    partyUsers.add(currentUserMail);
+
+
+                   // reference.setValue(partyUsers);
+
+                }
+                Log.println(Log.INFO,"usersinfotest",partyUsers.toString());
+
 
 
 

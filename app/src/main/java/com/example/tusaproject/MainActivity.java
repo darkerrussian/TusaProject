@@ -52,8 +52,9 @@ public class MainActivity extends AppCompatActivity {
 
 
                         ArrayList<String> getUsers = new ArrayList<>();
+                        //Здесь была ошибка и превращение списка в строку
                         getUsers.addAll((ArrayList<String>)dataSnapshot.child("users").getValue());
-                        //Почему я тут должен присваивать имеилы надо попробовать в createpartyitem или partyitem
+
                         party1.setUsersMails(getUsers);
                         Log.println(Log.ERROR, "ERRRR", getUsers.toString());
 
